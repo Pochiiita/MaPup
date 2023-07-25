@@ -1,0 +1,284 @@
+<RootWidget>:
+    orientation: "vertical"
+    Button:
+        text: "Select Source"
+        on_release:
+            root.manager.current = "destination"
+    Button:
+        text: "Select Destination"
+        on_release:
+            root.manager.current = "path"
+    Button:
+        text: "Find Shortest Path"
+        on_release:
+            root.manager.current = "path"
+
+<StartScreen>:
+    Image:
+        source: "Image/bg#1.png"
+    Button:
+        text: 'Start'
+        size_hint: 0.7, 0.095
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.10}
+        on_release: root.manager.current = 'sourcemap'
+        on_release: app.root.transition.direction = 'left'
+
+<SourceMap>:
+    Image:
+        source: "Image/MAP (2).png"
+        keep_ratio: False
+        pos_hint: {'x': 0.002, 'y': .001}
+
+    BoxLayout:
+        size_hint: None, None
+        size_hint_y: .03
+
+    Button:
+        text: 'Back'
+        color: (1, 1, 1, 1)
+        font_size: "17"
+        background_color: (0, 0, 0, 0)
+        size_hint: 0.2, 0.05
+        pos_hint: {'x': 0.078, 'y': .88}
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        on_press:
+            root.manager.current = "start"
+            root.manager.transition.direction = "right"
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: None, None
+
+        BoxLayout:
+            ScrollView:
+                GridLayout:
+                    size_hint: 1, 0.5
+                    id: source_grid
+                    cols: 1
+                    padding: 80
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    background_color: (1, 0, 0, 1)
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+        Button:
+            text: 'Continue to Origin'
+            background_color: (181/255, 19/255, 0/255, 0.9)
+            size_hint: 0.7, 0.095
+            padding_top: 50
+            size: 200, 50
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+            on_release: app.root.current = 'source'
+            on_release: app.root.transition.direction = 'left'
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+<SourceScreen>:
+    Image:
+        source: "Image/bg#2.png"
+    BoxLayout:
+        size_hint: None, None
+        size_hint_y: .03
+
+    Button:
+        text: 'Back'
+        color: (1, 1, 1, 1)
+        font_size: "17"
+        background_color: (0, 0, 0, 0)
+        size_hint: 0.2, 0.05
+        pos_hint: {'x': 0.078, 'y': .88}
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        on_press:
+            root.manager.current = "sourcemap"
+            root.manager.transition.direction = "right"
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: None, None
+
+        BoxLayout:
+            ScrollView:
+                GridLayout:
+                    size_hint: 1, 0.5
+                    id: source_grid
+                    cols: 1
+                    padding: 80
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    background_color: (1, 0, 0, 1)
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+        Button:
+            text: 'Confirm Origin'
+            background_color: (181/255, 19/255, 0/255, 0.9)
+            size_hint: 0.7, 0.095
+            padding_top: 50
+            size: 200, 50
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+            on_release: app.root.current = 'source_image_screen'
+            on_release: app.root.transition.direction = 'left'
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+<SourceImageScreen>:
+    Image:
+        source: "Image/bg#3.png"
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 30
+
+        Image:
+            id: source_image
+            source: ''
+            allow_stretch: True
+            keep_ratio: True
+
+    Button:
+        text: 'Back'
+        color: (1, 1, 1, 1)
+        font_size: "17"
+        background_color: (0, 0, 0, 0)
+        size_hint: 0.2, 0.05
+        pos_hint: {'x': 0.078, 'y': .88}
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        on_press:
+            root.manager.current = "source"
+            root.manager.transition.direction = "right"
+
+    Button:
+        text: 'Confirm Origin'
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        size_hint: 0.7, 0.075
+        padding_top: 60
+        size: 200, 50
+        pos_hint: {'center_x': 0.5, 'center_y': .10}
+        on_release: app.root.current = 'destination'
+        on_release: root.manager.transition.direction = 'left'
+
+<DestinationScreen>:
+    Image:
+        source: "Image/bg#2.png"
+
+    Button:
+        text: 'Back'
+        color: (1, 1, 1, 1)
+        font_size: "17"
+        background_color: (0, 0, 0, 0)
+        size_hint: 0.2, 0.05
+        pos_hint: {'x': 0.078, 'y': .88}
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        on_press:
+            root.manager.current = "source"
+            root.manager.transition.direction = "right"
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint: None, None
+
+        BoxLayout:
+            ScrollView:
+                GridLayout:
+                    size_hint: 1, 0.5
+                    id: destination_grid
+                    cols: 1
+                    padding: 80
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    background_color: (1, 0, 0, 1)
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+        Button:
+            text: 'Confirm Destination'
+            background_color: (181/255, 19/255, 0/255, 0.9)
+            size_hint: 0.7, 0.095
+            padding_top: 50
+            size: 200, 50
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+            on_release: app.root.current = 'path'
+            on_release: app.root.transition.direction = 'left'
+
+        BoxLayout:
+            size_hint: None, None
+            size_hint_y: .03
+
+<PathScreen>:
+    Image:
+        source: "Image/bg#3.png"
+
+    BoxLayout:
+        size_hint: None, None
+        size: 300, 600
+        pos_hint: {"center_x": 0.5, "center_y": 0.14}
+
+        Image:
+            allow_stretch: False
+            keep_ratio: True
+            size_hint: 1, 1.53
+            source: "Image/MAP (2).png"
+
+    Button:
+        text: 'Back'
+        color: (1, 1, 1, 1)
+        font_size: "17"
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        size_hint: 0.2, 0.05
+        pos_hint: {'x': 0.078, 'y': .03}
+        on_press:
+            root.manager.current = "destination"
+            root.manager.transition.direction = "right"
+
+    Label:
+        id: result_label
+        text: ''
+        font_size: 19
+        color: 0, 0, 0, 1
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: self.width, None
+        valign: 'middle'
+        halign: 'center'
+        pos_hint: {'x': 0.015, 'y': .875}
+        size: self.texture_size
+
+    Label:
+        id: meters_label
+        text: ''
+        font_size: 21
+        color: 0, 0, 0, 1
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: self.width, None
+        valign: 'middle'
+        halign: 'center'
+        pos_hint: {'x': 0.015, 'y': .815}
+        size: self.texture_size
+
+    Button:
+        id: shortest_path_button
+        text: 'Find Shortest Path'
+        background_color: (181/255, 19/255, 0/255, 0.9)
+        size_hint: None, None
+        size: 160,37
+        pos_hint: {'center_x': 0.7, 'center_y': 0.05}
+        on_release: root.find_shortest_path()
